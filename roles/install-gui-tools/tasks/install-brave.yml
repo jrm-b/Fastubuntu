@@ -1,0 +1,30 @@
+---
+- name: Install brave only if /usr/bin/brave-browser does not exist
+  ansible.builtin.stat:
+    path: '/usr/bin/brave-browser'
+  register: brave_installed
+
+- name: Download brave GPG key
+  ansible.builtin.get_url:
+    url: '{{ brave_key_url }}'
+    dest: '{{ brave_gpg_dest }}'
+  when: not brave_installed.stat.exists
+
+- name: Add brave repository
+  ansible.builtin.lineinfile:
+    path: '/etc/apt/sources.list.d/brave-browser-release.list'
+    line: '{{ brave_deb_url }}'
+    create: yes
+  become: true
+  when: not brave_installed.stat.exists
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  when: not brave_installed.stat.exists
+
+- name: Install brave browser
+  ansible.builtin.package:
+    name: brave-browser
+    state: present
+  when: not brave_installed.stat.exists

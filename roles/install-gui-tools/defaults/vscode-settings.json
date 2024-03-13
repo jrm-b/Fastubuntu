@@ -1,0 +1,9 @@
+{
+    "editor.fontSize": 14,
+    "explorer.compactFolders": false,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.iconTheme": "bearded-icons",
+    "workbench.tree.indent": 20,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false
+}

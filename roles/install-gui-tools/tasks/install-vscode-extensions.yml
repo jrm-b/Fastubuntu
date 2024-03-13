@@ -1,0 +1,15 @@
+---
+- name: Check if vscode already installed
+  ansible.builtin.stat:
+    path: '/usr/bin/code'
+  register: vscode_installed
+
+- name: Install vscode if not installed
+  include_tasks: install-vscode.yml
+  when: not vscode_installed.stat.exists
+
+- name: Install vscode extensions
+  ansible.builtin.shell:
+    cmd: 'code --install-extension {{ item }}'
+  loop: '{{ vscode_extensions }}'
+  when: vscode_installed.stat.exists

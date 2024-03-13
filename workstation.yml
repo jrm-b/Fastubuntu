@@ -1,0 +1,9 @@
+---
+- name: Bienvenue sur ta workstation !
+  hosts: localhost
+  connection: local
+  roles:
+    - role: roles/install-basics
+    - role: roles/install-gui-tools
+      users:
+        - username: '{{ ansible_user_id }}'

@@ -1,0 +1,60 @@
+---
+debian_release: bookworm
+default_packages:
+  #  - apt-listbugs
+  - apt-listchanges
+  - needrestart
+  - apt-transport-https
+  - btop
+  - build-essential
+  - ca-certificates
+  - curl
+  #  - foremost
+  #  - gcc
+  #  - gdb
+  - git
+  - gnupg
+  - gpg
+  - jq
+  - lynis
+  - virt-manager
+  - make
+  - net-tools
+  - p7zip-full
+  - rsyslog
+  #  - tilix
+  - tree
+  - unzip
+  - vim
+  - zip
+  - wget
+  - gnome-shell-extension-manager
+
+packages_to_remove:
+  - gedit
+  - gnome-2048
+  - gnome-chess
+  - gnome-console
+  - gnome-klotski
+  - gnome-mines
+  - gnome-mahjongg
+  - gnome-nibbles
+  - gnome-robots
+  - gnome-sudoku
+  - gnome-taquin
+  - gnome-tetravex
+  - quadrapassel
+
+mise_tools:
+  - node@lts
+  - node@21
+
+docker_gpg_dest: "/usr/share/keyrings/docker-archive-keyring.gpg"
+docker_key_url: "https://download.docker.com/linux/debian/gpg"
+docker_deb_url: "deb [arch=amd64 signed-by={{ docker_gpg_dest }}] https://download.docker.com/linux/debian {{ debian_release }} stable"
+
+docker_components:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin

@@ -1,0 +1,5 @@
+- include_tasks: default-packages.yml
+- include_tasks: setup-dirs.yml
+- include_tasks: docker-install.yml
+- include_tasks: mise-install.yml
+- include_tasks: cleanup.yml

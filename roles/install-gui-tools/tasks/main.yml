@@ -1,0 +1,5 @@
+- include_tasks: install-vscode.yml
+- include_tasks: install-vscode-extensions.yml
+- include_tasks: set-vscode-settings.yml
+#- include_tasks: install-brave.yml
+- include_tasks: cleanup.yml
